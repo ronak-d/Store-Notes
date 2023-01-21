@@ -7,9 +7,10 @@ const Footer = () => {
   return (
     <div
       style={{
-        backgroundColor: "orchid",
+        backgroundColor: "black",
         borderBottom: "2px solid black",
         padding: "1px",
+        color: "white",
       }}
     >
       <Container>

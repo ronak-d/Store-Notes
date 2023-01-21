@@ -9,25 +9,41 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <Navbar bg="primary" expand="lg">
+    <Navbar bg="dark" expand="lg">
       <Container fluid>
         <Navbar.Brand className="navbar_heads">
-          <Link to="/">StoreNotes</Link>
+          {/* <div style={{ border: "2px solid red" }}> */}
+          <Link style={{ textDecoration: "none", color: "white" }} to="/">
+            StoreNotes
+          </Link>
+          {/* </div> */}
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
             className="me-auto my-2 my-lg-0"
             style={{ maxHeight: "100px" }}
-            navbarScroll
+            navbarScrollSW
           >
-            <NavDropdown title="ronrev" id="navbarScrollingDropdown">
+            <NavDropdown
+              style={{ textDecoration: "none", color: "white" }}
+              title="ronrev"
+              id="navbarScrollingDropdown"
+            >
               <NavDropdown.Item href="#action4">My Profile</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="#action5">Log Out</NavDropdown.Item>
             </NavDropdown>
             <Nav.Link>
-              <Link to="/mynotes"> My Notes</Link>
+              {/* <div style={{ border: "2px solid red" }}> */}
+              <Link
+                style={{ textDecoration: "none", color: "white" }}
+                to="/mynotes"
+              >
+                {" "}
+                My Notes
+              </Link>
+              {/* </div> */}
             </Nav.Link>
           </Nav>
           <Form className="d-flex">
