@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import notes from "../../Data/notes";
+import Badge from "react-bootstrap/Badge";
 
 const MyNotes = () => {
   function deleteHandler(id) {
@@ -25,28 +26,21 @@ const MyNotes = () => {
         {notes.map((note, i) => (
           <Card style={{ margin: "15px" }}>
             <Card.Header style={{ display: "flex" }}>
-              <span
+              <div
                 style={{
                   color: "black",
                   textDecoration: "none",
                   flex: 1,
                   cursor: "pointer",
-                  alignContent: "flex-start",
+                  alignItems: "flex-start",
                   justifyContent: "flex-start",
                 }}
               >
-                {note.title}
-              </span>
-              {/* <span
-                style={{
-                  color: "black",
-                  textDecoration: "none",
-                  flex: 3,
-                  cursor: "pointer",
-                }}
-              >
-                {`category->${note.category}`}
-              </span> */}
+                {/* {note.title} */}
+                <Badge style={{ padding: "10px", marginTop: "12px" }} bg="info">
+                  {note.title}
+                </Badge>
+              </div>
 
               <div>
                 <Button style={{ margin: "10px" }} variant="primary">
@@ -73,6 +67,7 @@ const MyNotes = () => {
             </Card.Header>
 
             <Card.Body>
+              <Badge bg="success">{`Category -> ${note.category}`}</Badge>
               <blockquote className="blockquote mb-0">
                 <p>{note.content}</p>
                 <footer className="blockquote-footer">
