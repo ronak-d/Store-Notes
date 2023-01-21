@@ -3,6 +3,7 @@ import AllRoutes from "./AllRoutes/AllRoutes";
 import "./App.css";
 import Footer from "./Footer/Footer";
 import Header from "./Header/Header";
+import MainScreen from "./MainScreen/MainScreen";
 import LandingPage from "./Pages/LandingPage/LandingPage";
 
 function App() {
@@ -11,7 +12,8 @@ function App() {
       <BrowserRouter>
         <Header />
         <AllRoutes />
-        <Footer />
+        <MainScreen />
+        {/* <Footer /> */}
       </BrowserRouter>
     </div>
   );
