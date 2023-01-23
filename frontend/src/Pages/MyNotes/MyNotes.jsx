@@ -3,13 +3,13 @@ import MainScreen from "../../MainScreen/MainScreen";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import notes from "../../Data/notes";
+// import notes from "../../Data/notes";
 import Badge from "react-bootstrap/Badge";
 import axios from "axios";
 import { useEffect } from "react";
 
 const MyNotes = () => {
-  const [notes, setNotes] = useState(null);
+  const [notes, setNotes] = useState("");
 
   function deleteHandler(id) {
     if (window.confirm("Are you sure you want to delete this note"));
@@ -17,9 +17,8 @@ const MyNotes = () => {
 
   const fetchNotes = async () => {
     try {
-      const apiData = await axios.get("http://localhost:5000/api/notes/");
-      console.log(apiData);
-      setNotes(apiData);
+      console.log("Fetching notes...");
+      await axios.get("/api/notes/").then((e) => setNotes(e.data));
     } catch (error) {
       console.log(error);
     }
@@ -27,7 +26,9 @@ const MyNotes = () => {
 
   useEffect(() => {
     fetchNotes();
-  }, []);
+  });
+
+  console.log("notes", notes);
 
   return (
     <>
@@ -40,9 +41,8 @@ const MyNotes = () => {
             Create New Note
           </Link>
         </Button>
-
         {notes.map((note, i) => (
-          <Card style={{ margin: "15px" }}>
+          <Card key={i} style={{ margin: "15px" }}>
             <Card.Header style={{ display: "flex" }}>
               <div
                 style={{
@@ -95,6 +95,7 @@ const MyNotes = () => {
             </Card.Body>
           </Card>
         ))}
+        ;
       </MainScreen>
     </>
   );
