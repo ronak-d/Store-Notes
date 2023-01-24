@@ -9,7 +9,7 @@ import axios from "axios";
 import { useEffect } from "react";
 
 const MyNotes = () => {
-  const [notes, setNotes] = useState("");
+  const [notes, setNotes] = useState(null);
 
   function deleteHandler(id) {
     if (window.confirm("Are you sure you want to delete this note"));
@@ -18,7 +18,7 @@ const MyNotes = () => {
   const fetchNotes = async () => {
     try {
       console.log("Fetching notes...");
-      await axios.get("/api/notes/").then((e) => setNotes(e.data));
+      await axios.get("/api/notes").then((e) => setNotes(e.data));
     } catch (error) {
       console.log(error);
     }
@@ -26,7 +26,7 @@ const MyNotes = () => {
 
   useEffect(() => {
     fetchNotes();
-  });
+  }, []);
 
   console.log("notes", notes);
 
@@ -41,7 +41,7 @@ const MyNotes = () => {
             Create New Note
           </Link>
         </Button>
-        {notes.map((note, i) => (
+        {notes?.map((note, i) => (
           <Card key={i} style={{ margin: "15px" }}>
             <Card.Header style={{ display: "flex" }}>
               <div
@@ -95,7 +95,6 @@ const MyNotes = () => {
             </Card.Body>
           </Card>
         ))}
-        ;
       </MainScreen>
     </>
   );
